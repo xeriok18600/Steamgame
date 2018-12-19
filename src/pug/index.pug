@@ -8,15 +8,17 @@ html(lang="en")
         //- link(rel="stylesheet", href="/dist/style.css")
         link(rel='stylesheet prefetch' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css')
     body
-        header
+        header.has-navbar-fixed-top
             .columns.is-vcentered.m-0
                 .column.has-text-centered
-                    h1.title Steam
+                    img.turn(src="https://cdn.discordapp.com/attachments/161411050300899328/524871463136788480/8.png" width="64px" height="64px")
+                    img(src="https://cdn.discordapp.com/attachments/161411050300899328/524872855616487439/LOGO4.png" width="128px" height="128px")
                 .column
                     p.control.has-icons-left
                         input.input.is-rounded(type="text", name="", placeholder="搜尋")
                         span.icon.is-small.is-left
                             i.fas.fa-search
+                        span.test
                 .column.has-text-centered
                     div
                         p.heading.is-size-4-desktop 全部遊戲
@@ -25,10 +27,10 @@ html(lang="en")
                     div
                         p.heading.is-size-4-desktop 全部特價遊戲
                         p.title 3456
-                .column.has-text-centered
-                    div
-                        p.heading.is-size-4-desktop 免費遊戲
-                        p.title 3456
+                //- .column.has-text-centered
+                //-     div
+                //-         p.heading.is-size-4-desktop 免費遊戲
+                //-         p.title 3456
         .main.m-0
             #card__group.columns.flex-wrap.m-0
                 //- .column.is-3 
@@ -49,5 +51,5 @@ html(lang="en")
                 //-             a(href='#') #大型多人連線
                 //-             br
                 //-             time(datetime='') 11:09 PM - 1 Jan 2016
-        //- script(src="/dist/index.js")
+
         
