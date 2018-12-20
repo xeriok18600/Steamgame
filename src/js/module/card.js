@@ -1,6 +1,23 @@
-// export function cardAdd(menu) {
-// 	for (var i = 0; i <= menu.length; i++) {
-// 		$('#card__group').append('<div class="column is-3"><div class="card"><div class="card-image"><figure class="image is-4by3"><img class="bg-p" src="https://cdn.discordapp.com/attachments/161411050300899328/524866016552157215/LOAD.png" data-original="' + menu[i].url + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + menu[i].url + '"/></figure></div><div class="media-content"><p class="title is-4">' + menu[i].name + '</p><p class="subtitle is-6">$$$</p></div></div><div class="content">俗又大碗 </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /><time datetime="">11:09 PM - 1 Jan 2016</time></div></div></div>')
-// 	}
-// }
-/* <div class="column is-3"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img src="https://bulma.io/images/placeholders/96x96.png"/></figure></div><div class="media-content"><p class="title is-4">+menu[i].name+</p><p class="subtitle is-6">$$$</p></div></div><div class="content">俗又大碗 </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /><time datetime="">11:09 PM - 1 Jan 2016</time></div></div></div> */
+export function cardAdd(menu) {
+	var displayInfo = $('#card__group')
+	for (var i = 0; i <= menu.length; i++) {
+		displayInfo.append('<div class="column is-3 "><div class="card"><div class="card-image"><figure class="image is-4by3"><img class="bg-p" src="' + menu[i].url + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + menu[i].url + '"/></figure></div><div class="media-content"><p class="title is-4">' + menu[i].name + '</p><p class="subtitle is-6">$$$</p></div></div><div class="content">俗又大碗 </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /><time datetime="">11:09 PM - 1 Jan 2016</time></div></div></div>')
+	}
+}
+// https://cdn.discordapp.com/attachments/161411050300899328/524866016552157215/LOAD.png
+
+export function cardSearch(menu) {
+	$(':input').on('input', function () {
+		var value = $(this).val()
+		for (var i = 0; i <= menu.length; i++) {
+			if (value == menu[i].name) {
+				$(('#card__group')).html('<div data-info="del" class="column is-3"><div class="card"><div class="card-image"><figure class="image is-4by3"><img class="bg-p" src="' + menu[i].url + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + menu[i].url + '"/></figure></div><div class="media-content"><p class="title is-4">' + menu[i].name + '</p><p class="subtitle is-6">$$$</p></div></div><div class="content">俗又大碗 </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /><time datetime="">11:09 PM - 1 Jan 2016</time></div></div></div>')
+			} else if (!value) {
+				var del = $(".column[data-info='del']")
+				$(del).addClass('display-none')
+				return cardAdd(menu)
+			}
+		}
+		console.log(menu)
+	})
+}

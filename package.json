@@ -38,6 +38,7 @@
     },
     "dependencies": {
         "bulma": "^0.7.2",
+        "imagesloaded": "^4.1.4",
         "jquery": "^3.3.1"
     }
 }
