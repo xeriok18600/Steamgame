@@ -5,6 +5,11 @@ import {
 	cardAdd,
 	cardSearch
 } from './module/card'
+import {
+	mouseStatus,
+	scrollStatus,
+	clickTop
+} from './module/mouse'
 
 var imagesLoaded = require('imagesloaded')
 var $ = require('jquery')
@@ -12,6 +17,8 @@ imagesLoaded.makeJQueryPlugin($)
 
 const api = 'https://jsonsweeteaste.herokuapp.com/menu'
 var menu = []
+// eslint-disable-next-line camelcase
+
 
 $(document).ready(function () {
 	$.ajax({
@@ -19,7 +26,7 @@ $(document).ready(function () {
 		url: api,
 		dataType: 'json',
 		error: function () {
-			console.log("載入失敗")
+			console.log('載入失敗')
 		},
 		success: function (res) {
 			menu = res
@@ -32,8 +39,12 @@ $(document).ready(function () {
 		}
 	})
 })
+mouseStatus()
 
-$('header').mouseenter(function () {
-	var turn = $(":img[data-info='turn']")
-	turn.addClass('turn')
+$(window).scroll(function() {
+	var w_scrollTop = $(window).scrollTop()
+	scrollStatus(w_scrollTop)
+	console.log(w_scrollTop)
 })
+
+clickTop()
