@@ -41,7 +41,8 @@ $(document).ready(function () {
 })
 mouseStatus()
 
-$(window).scroll(function() {
+$(window).scroll(function () {
+	// eslint-disable-next-line camelcase
 	var w_scrollTop = $(window).scrollTop()
 	scrollStatus(w_scrollTop)
 	console.log(w_scrollTop)
