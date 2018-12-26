@@ -39,6 +39,7 @@
     "dependencies": {
         "bulma": "^0.7.2",
         "imagesloaded": "^4.1.4",
+        "infinite-scroll": "^3.0.5",
         "jquery": "^3.3.1"
     }
 }
