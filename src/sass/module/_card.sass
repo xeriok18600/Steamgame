@@ -1,17 +1,27 @@
 @import "config/variables"
 .card
-    box-shadow: 0px 2px 0 darken($font, 5%), 2px 4px 6px darken($font, 2%)
-    transition: all 150ms linear
     cursor: pointer
-    &:hover
-        background: darken($hover, 1.5%)
-        box-shadow: 1px 1px 2px rgba($font, .2)
-        color: lighten(black, 18%) 
-        text-decoration: none
-        // text-shadow: -1px -1px 0 darken(black, 9.5%)
-        transition: all 250ms linear
-    img
+    .bg-p
         object-fit: cover
     .sm-p
         height: 100%
-        
+        object-fit: contain
+    .card-content
+        box-shadow: 0px 2px 0 darken($font, 5%), 2px 4px 6px darken($font, 2%)
+        transition: all 150ms linear
+        &:hover
+            background: darken($hover, 1.5%)
+            box-shadow: 1px 1px 2px rgba($font, .2)
+            color: lighten(black, 18%) 
+            text-decoration: none
+            // text-shadow: -1px -1px 0 darken(black, 9.5%)
+            transition: all 250ms linear
+        .subtitle 
+            position: relative
+            color: #48a38e
+            &:after
+                position: absolute
+                content: attr(data-text)
+                color: #4a4a4a
+                text-decoration: line-through
+                

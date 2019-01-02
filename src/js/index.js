@@ -16,8 +16,7 @@ var $ = require('jquery')
 
 imagesLoaded.makeJQueryPlugin($)
 
-const api = 'https://jsonsweeteaste.herokuapp.com/menu'
-var menu = []
+const api = 'https://ancient-mesa-96474.herokuapp.com/Get'
 var page = 1
 // eslint-disable-next-line camelcase
 
@@ -33,13 +32,23 @@ $.ajax({
 	},
 	success: function (res) {
 		page += 1
-		menu = res
-		console.log(menu)
-		$('#total__title').text(menu.length)
-		$('#card__group').imagesLoaded(function () {
-			cardAdd(menu)
+		var applications = res.applications
+		var total = res.applications.length
+		var time_title = res.datetime
+		$.each(applications, function (index, ele) {
+			var pic = ele.small_pic
+			var title = ele.app_name
+			var sale = ele.discount
+			var eva = ele.evaluation
+			var origin = ele.original_price
+			var discount = ele.discount_price
+			$('#card__group').imagesLoaded(function () {
+				cardAdd(title, pic, origin, discount, sale, eva)
+			})
+			// cardSearch(menu)
 		})
-		cardSearch(menu)
+		$('#total__title').text(total)
+		$('#time__title').text(time_title)
 	}
 })
 
@@ -50,30 +59,6 @@ $(window).data('ajaxready', true).scroll(function () {
 	var w_scrollTop = $(window).scrollTop()
 	scrollStatus(w_scrollTop)
 	console.log(w_scrollTop)
-
-	// var infScroll = new InfiniteScroll('#card__group', {
-	// 	path: testData
-	// })
-
-	// function testData() {
-	// 	$.ajax({
-	// 		type: 'GET',
-	// 		url: api,
-	// 		dataType: 'json',
-	// 		error: function () {
-	// 			console.log('載入失敗')
-	// 		},
-	// 		success: function (res) {
-	// 			menu = res
-	// 			console.log(menu)
-	// 			$('#total__title').text(menu.length)
-	// 			$('#card__group').imagesLoaded(function () {
-	// 				cardAdd(menu)
-	// 			})
-	// 			cardSearch(menu)
-	// 		}
-	// 	})
-	// }
 })
 
 clickTop()
