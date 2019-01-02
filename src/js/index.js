@@ -38,14 +38,14 @@ $.ajax({
 		$.each(applications, function (index, ele) {
 			var pic = ele.small_pic
 			var title = ele.app_name
-			var sale = ele.discount
+			var sale = ele.discount.replace(/-/,"")
 			var eva = ele.evaluation
 			var origin = ele.original_price
 			var discount = ele.discount_price
 			$('#card__group').imagesLoaded(function () {
 				cardAdd(title, pic, origin, discount, sale, eva)
 			})
-			// cardSearch(menu)
+			cardSearch(title, pic, origin, discount, sale, eva)
 		})
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
