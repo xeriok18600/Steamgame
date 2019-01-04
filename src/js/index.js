@@ -43,10 +43,13 @@ $.ajax({
 			$('#card__group').imagesLoaded(function () {
 				cardAdd(title, pic, origin, discount, sale, eva, b_pic)
 			})
-			cardSearch()
+			// cardSearch(title, pic, origin, discount, sale, eva, b_pic)
 		})
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
+	},
+	complete: function() {
+		cardSearch()
 	}
 })
 

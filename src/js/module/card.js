@@ -8,14 +8,32 @@ export function cardSearch() {
 	$(':input').on('input', function () {
 		var value = $(this).val()
 		var displayInfo = $('#card__group')
-		// var regex = new RegExp(value + "+", "gi")
+		var regex = new RegExp(value + "+", "i")
+		console.log(value)
+		if (value != "") {
+			$('#card__group > .column').each(function() {
+				var title = $(this).data('info')
+				var compare = title.match(regex)
+				if (compare) {
+					$(this).removeClass('display-none')
+				}
+				else {
+					$(this).addClass('display-none')
+				}
+			})
+		}
+		else {
+			return cardAdd
+		}	
+		// var regex = new RegExp(value + "+", "i")
 		// var compare = title.match(regex)
 		// if (value != "") {
 		// 	if (compare) {
-		// 		console.log(title.match(regex))
-		// 		displayInfo.html('<div data-info="del" class="column is-one-quarter"><div class="card"><div class="card-image"><div class="show">' + sale + '</div><figure class="image is-4by3"><img class="bg-p" src="' + b_pic + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + pic + '"/></figure></div><div class="media-content"><p class="title is-4">' + title + '</p><p class="subtitle is-6" data-text=" ' + origin + ' ">' + discount + '</p></div></div><div class="content">' + eva + ' </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /></div></div></div>')
-		// 	} else if (value == "") {
-		// 		var del = $(".column[data-info='del']")
+		// 		console.log(value)
+		// 		console.log(compare)
+		// 		displayInfo.html('<div class="column is-one-quarter gamecard"><div class="card"><div class="card-image"><div class="show">' + sale + '</div><figure class="image is-4by3"><img class="bg-p" src="' + b_pic + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + pic + '"/></figure></div><div class="media-content"><p class="title is-4">' + title + '</p><p class="subtitle is-6" data-text=" ' + origin + ' ">' + discount + '</p></div></div><div class="content">' + eva + ' </div><a href="#">#冒險</a><a href="#">#大型多人連線</a><br /></div></div></div>')
+		// 	} else {
+		// 		var del = $(".column[data-info= '']")
 		// 		$(del).addClass('display-none')
 		// 		return cardAdd(title, pic, origin, discount, sale, eva, b_pic)
 		// 	}
