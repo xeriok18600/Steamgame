@@ -10,9 +10,13 @@ html(lang="en")
     body
         header
             .columns.is-vcentered.m-0
-                .column.has-text-centered
-                    img(data-info="turn" src="https://cdn.discordapp.com/attachments/161411050300899328/525216236343394305/13.png" width="64px" height="64px")
-                    img(src="https://cdn.discordapp.com/attachments/161411050300899328/525213688693522443/11.png" width="128px" height="128px")
+                //- .column.has-text-centered
+                //-     img(data-info="turn" src="https://cdn.discordapp.com/attachments/161411050300899328/525216236343394305/13.png" width="64px" height="64px")
+                //-     img(src="https://cdn.discordapp.com/attachments/161411050300899328/525213688693522443/11.png" width="128px" height="128px")
+                .column
+                    #btn__group.buttons.has-addons.is-centered
+                        span(data-status='1').button.is-success.is-selected 全部遊戲
+                        span.button 特價遊戲
                 .column
                     p.control.has-icons-left
                         input.input.is-rounded(type="text", name="", placeholder="搜尋")
@@ -25,12 +29,12 @@ html(lang="en")
                         p#total__title.title 
                 .column.has-text-centered
                     div
+                        p.heading.is-size-4-desktop 特價遊戲
+                        p#discount__title.title
+                .column.has-text-centered
+                    div
                         p.heading.is-size-4-desktop 更新時間
                         p#time__title.title
-                //- .column.has-text-centered
-                //-     div
-                //-         p.heading.is-size-4-desktop 免費遊戲
-                //-         p.title 3456
         .main.m-0
             #card__group.columns.flex-wrap.m-0
                 //- .column.is-3 
@@ -47,9 +51,6 @@ html(lang="en")
                 //-                     p.title.is-4 18X
                 //-                     p.subtitle.is-6 @作者
                 //-             .content 內文 
-                //-             a(href='#') #冒險
-                //-             a(href='#') #大型多人連線
-                //-             br
                 //-             time(datetime='') 11:09 PM - 1 Jan 2016
             #top.display-none
 

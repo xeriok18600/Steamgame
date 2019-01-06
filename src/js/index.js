@@ -7,7 +7,8 @@ import {
 import {
 	mouseStatus,
 	scrollStatus,
-	clickTop
+	clickTop,
+	gameFilter
 } from './module/mouse'
 
 var imagesLoaded = require('imagesloaded')
@@ -31,29 +32,31 @@ $.ajax({
 		page += 1
 		var applications = res.applications
 		var total = res.applications.length
-		var time_title = res.datetime
+		var time_title = res.datetime.substr(0, 10)
 		$.each(applications, function (index, ele) {
 			var b_pic = ele.header_pic
 			var pic = ele.small_pic
 			var title = ele.app_name
-			var sale = ele.discount.replace(/-/, "")
+			var sale = ele.discount.replace(/-/, '')
 			var eva = ele.evaluation
 			var origin = ele.original_price
 			var discount = ele.discount_price
+			var link = ele.steam_link
 			$('#card__group').imagesLoaded(function () {
-				cardAdd(title, pic, origin, discount, sale, eva, b_pic)
+				cardAdd(title, pic, origin, discount, sale, eva, b_pic, link)
 			})
-			// cardSearch(title, pic, origin, discount, sale, eva, b_pic)
 		})
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
 	},
 	complete: function() {
 		cardSearch()
+		gameFilter()
 	}
 })
 
 mouseStatus()
+
 
 $(window).data('ajaxready', true).scroll(function () {
 	// eslint-disable-next-line camelcase
