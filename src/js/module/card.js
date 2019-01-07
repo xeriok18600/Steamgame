@@ -1,7 +1,7 @@
 export function cardAdd(title, pic, origin, discount, sale, eva, b_pic, link) {
 	var displayInfo = $('#card__group')
 	if (discount.length != 0) {
-		displayInfo.append('<div data-info="' + title + '" class="column is-one-quarter dis"><div class="card"><div class="card-image"><div class="show">' + sale + '</div><figure class="image is-4by3"><img class="bg-p" src="' + b_pic + '"/></figure></div><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + pic + '"/></figure></div><div class="media-content"><p class="title is-4">' + title + '</p><p class="subtitle is-6" data-text=" ' + origin + ' ">' + discount + '</p></div></div><div class="content">' + eva + ' </div></div></div></div>')
+		displayInfo.append('<div data-info="' + title + '" class="column is-one-quarter dis"><div class="card"><a target="_blank" href="' + link + '"><div class="card-image"><div class="show">' + sale + '</div><figure class="image is-4by3"><img class="bg-p" src="' + b_pic + '"/></figure></div></a><div class="card-content"><div class="media"><div class="media-left"><figure class="image is-48x48"><img class="sm-p" src="' + pic + '"/></figure></div><div class="media-content"><p class="title is-4">' + title + '</p><p class="subtitle is-6" data-text=" ' + origin + ' ">' + discount + '</p></div></div><div class="content">' + eva + ' </div></div></div></div>')
 		var status = $('#card__group > .dis')
 		$('#discount__title').text(status.length)
 	} else {
