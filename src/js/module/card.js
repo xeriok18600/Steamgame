@@ -15,8 +15,8 @@ export function cardSearch() {
 	var displayInfo = $('#card__group')
 	$(':input').on('input', function () {
 		var value = $(this).val()
-		var regex = new RegExp(value + '+', 'gi')
 		if (value) {
+			var regex = new RegExp(value + '+', 'gi')
 			$('#card__group > .column').each(function () {
 				var title = $(this).data('info')
 				var compare = title.match(regex)
@@ -24,8 +24,11 @@ export function cardSearch() {
 					$(this).removeClass('display-none')
 				} else {
 					$(this).addClass('display-none')
-					console.log('none')
 				}
+			})
+		} else {
+			$('#card__group > .column').each(function () {
+				$(this).removeClass('display-none')
 			})
 		}
 	})
