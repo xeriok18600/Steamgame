@@ -5,7 +5,6 @@ import {
 	cardSearch
 } from './module/card'
 import {
-	mouseStatus,
 	scrollStatus,
 	clickTop,
 	gameFilter
@@ -14,11 +13,9 @@ import {
 var imagesLoaded = require('imagesloaded')
 // var InfiniteScroll = require('infinite-scroll')
 var $ = require('jquery')
-
 imagesLoaded.makeJQueryPlugin($)
 
 const api = 'https://ancient-mesa-96474.herokuapp.com/Get'
-var page = 1
 // eslint-disable-next-line camelcase
 
 $.ajax({
@@ -29,7 +26,6 @@ $.ajax({
 		console.log('載入失敗')
 	},
 	success: function (res) {
-		page += 1
 		var applications = res.applications
 		var total = res.applications.length
 		var time_title = res.datetime.substr(0, 10)
@@ -49,20 +45,15 @@ $.ajax({
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
 	},
-	complete: function() {
+	complete: function () {
 		cardSearch()
 		gameFilter()
+		clickTop()
 	}
 })
-
-mouseStatus()
-
 
 $(window).data('ajaxready', true).scroll(function () {
 	// eslint-disable-next-line camelcase
 	var w_scrollTop = $(window).scrollTop()
 	scrollStatus(w_scrollTop)
-	// console.log(w_scrollTop)
 })
-
-clickTop()

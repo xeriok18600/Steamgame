@@ -1,6 +1,6 @@
 @import "config/variables"
 .card
-    cursor: pointer
+    height: 100%
     .bg-p
         object-fit: cover
     .sm-p
@@ -8,6 +8,24 @@
         object-fit: contain
     .card-image
         position: relative
+        transition: all 150ms linear
+        cursor: pointer
+        &:after
+            position: absolute
+            content: ''
+            font-family: "Font Awesome 5 Free"
+            z-index: 999
+            font-weight: 900
+            font-size: 50px
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+        &:hover
+            opacity: 0.7
+            transform: scale(1.05,1.05)
+            &:after
+                content: '\f25a'
+                color: rgb(50, 115, 220)   
         .show
             position: absolute
             z-index: 999
@@ -15,15 +33,13 @@
             color: white
             padding: 0.25rem
     .card-content
-        box-shadow: 0px 2px 0 darken($font, 5%), 2px 4px 6px darken($font, 2%)
-        transition: all 150ms linear    
-        &:hover
-            background: darken($hover, 1.5%)
-            box-shadow: 1px 1px 2px rgba($font, .2)
-            color: lighten(black, 18%) 
-            text-decoration: none
-            // text-shadow: -1px -1px 0 darken(black, 9.5%)
-            transition: all 250ms linear
+        // transition: all 150ms linear 
+        // &:hover
+        //     background: darken($hover, 1.5%)
+        //     box-shadow: 1px 1px 2px rgba($font, .2)
+        //     color: lighten(black, 18%) 
+        //     text-decoration: none
+        //     transition: all 250ms linear
         .subtitle 
             position: relative
             color: #48a38e
@@ -32,4 +48,4 @@
                 content: attr(data-text)
                 color: #4a4a4a
                 text-decoration: line-through
-                left: 65px
+                left: 70px
