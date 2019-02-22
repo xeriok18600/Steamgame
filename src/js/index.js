@@ -22,10 +22,10 @@ $.ajax({
 	type: 'GET',
 	url: api,
 	dataType: 'json',
-	error: function () {
+	error() {
 		console.log('載入失敗')
 	},
-	success: function (res) {
+	success(res) {
 		var applications = res.applications
 		var total = res.applications.length
 		var time_title = res.datetime.substr(0, 10)
@@ -45,10 +45,14 @@ $.ajax({
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
 	},
-	complete: function () {
+	beforeSend() {
+		$('#loading').show()
+	},
+	complete() {
 		cardSearch()
 		gameFilter()
 		clickTop()
+		$('#loading').hide()
 	}
 })
 
