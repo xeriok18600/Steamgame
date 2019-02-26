@@ -1,8 +1,4 @@
 # Steamgame
-呈現 Steam game 的排名與價格，將歷史資料視覺化
+此為 Steam 上面遊戲特價排行榜，使用 ****JQuery + Bulma**** 撰寫，串接 API 實作出一個[網站](https://steamgame.netlify.com/)。
 
-目前後端 api 還沒做好，先用之前的甜點 api
-
-短期目標 : 先完成總體特價顯示，之後再完成個別歷史資料
-
-[網頁](https://steamgame.netlify.com/)
+[Desktop 畫面](https://i.imgur.com/N4vC82e.jpg) / [Mobile 畫面](https://i.imgur.com/LXyODjZ.png)
