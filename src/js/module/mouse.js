@@ -9,23 +9,23 @@ export function scrollStatus(w_scrollTop) {
 export function clickTop() {
 	$('#top').click(function () {
 		$('html, body').animate({
-			scrollTop: 0
-		}, 600)
+				scrollTop: 0
+			},
+			600
+		)
 	})
 }
 
-export function gameFilter() {
-	$('#btn__group > span').click(function () {
-		if ($(this).data('status') == '1') {
-			$('span').removeClass('is-success is-selected')
-			$(this).addClass('is-success is-selected')
-			$('#card__group > .column').removeClass('display-none')
-		} else {
-			$('span').removeClass('is-success is-selected')
-			$(this).addClass('is-success is-selected')
-			if ($('#card__group > .column').data('status') == 'total') {
-				$('.total').addClass('display-none')
-			}
-		}
-	})
-}
+// export function gameFilter() {
+// 	$('#btn__group > span').click(function () {
+// 		if ($(this).data('status') == '1') {
+// 			$('span').removeClass('is-success is-selected')
+// 			$(this).addClass('is-success is-selected')
+// 			$('#card__group > .column').removeClass('display-none')
+// 		} else {
+// 			$('span').removeClass('is-success is-selected')
+// 			$(this).addClass('is-success is-selected')
+// 			$('.total').addClass('display-none')
+// 		}
+// 	})
+// }

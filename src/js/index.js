@@ -6,8 +6,7 @@ import {
 } from './module/card'
 import {
 	scrollStatus,
-	clickTop,
-	gameFilter
+	clickTop
 } from './module/mouse'
 
 var imagesLoaded = require('imagesloaded')
@@ -15,7 +14,8 @@ var imagesLoaded = require('imagesloaded')
 var $ = require('jquery')
 imagesLoaded.makeJQueryPlugin($)
 
-const api = 'https://ancient-mesa-96474.herokuapp.com/Get'
+let p = 1
+const api = 'https://ancient-mesa-96474.herokuapp.com/Page/' + p + ''
 // eslint-disable-next-line camelcase
 
 $.ajax({
@@ -38,9 +38,8 @@ $.ajax({
 			var origin = ele.original_price
 			var discount = ele.discount_price
 			var link = ele.steam_link
-			$('#card__group').imagesLoaded(function () {
-				cardAdd(title, pic, origin, discount, sale, eva, b_pic, link)
-			})
+			var rank = ele.rank
+			gameFilter(title, pic, origin, discount, sale, eva, b_pic, link, rank)
 		})
 		$('#total__title').text(total)
 		$('#time__title').text(time_title)
@@ -50,14 +49,38 @@ $.ajax({
 	},
 	complete() {
 		cardSearch()
-		gameFilter()
 		clickTop()
 		$('#loading').hide()
 	}
 })
 
-$(window).data('ajaxready', true).scroll(function () {
-	// eslint-disable-next-line camelcase
-	var w_scrollTop = $(window).scrollTop()
-	scrollStatus(w_scrollTop)
-})
+$(window)
+	.data('ajaxready', true)
+	.scroll(function () {
+		// eslint-disable-next-line camelcase
+		var w_scrollTop = $(window).scrollTop()
+		scrollStatus(w_scrollTop, p)
+	})
+
+
+function gameFilter(title, pic, origin, discount, sale, eva, b_pic, link, rank) {
+	$('#card__group').imagesLoaded(function () {
+		cardAdd(title, pic, origin, discount, sale, eva, b_pic, link, rank)
+	})
+	$('#btn__group > span').click(function () {
+		if ($(this).data('status') == '1') {
+			$('.dis').remove()
+			$('#card__group').imagesLoaded(function () {
+				cardAdd(title, pic, origin, discount, sale, eva, b_pic, link, rank)
+			})
+			$('span').removeClass('is-success is-selected')
+			$(this).addClass('is-success is-selected')
+			// $('#card__group > .column').removeClass('display-none')
+		} else {
+			$('span').removeClass('is-success is-selected')
+			$(this).addClass('is-success is-selected')
+			// $('.total').addClass('display-none')
+			$('.total').remove()
+		}
+	})
+}
